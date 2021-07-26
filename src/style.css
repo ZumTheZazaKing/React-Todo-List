@@ -1,5 +1,48 @@
 body {
   background-color: burlywood;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body .container {
+  text-align: center;
+  margin-top: 50px;
+}
+body .container h1 {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+body .container .form input[type=text], body .container .form input[type=submit] {
+  box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+}
+body .container .form input[type=submit] {
+  cursor: pointer;
+}
+body .container .form input[type=submit]:hover {
+  background-color: rgba(211, 211, 211, 0.9);
+}
+body .container .list ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+body .container .list ul li {
+  background-color: white;
+  padding: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
+  text-align: left;
+}
+body .container .list ul li:first-child {
+  border-top: none;
+}
+body .container .list ul li:last-child {
+  border-bottom: none;
 }
 
 /*# sourceMappingURL=style.css.map */

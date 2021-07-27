@@ -36,7 +36,7 @@ function TaskList(props){
 
   function deleteTask(e){
     let ogInnerHTML = e.target.parentNode.innerHTML;
-    let indexToCutTo = ogInnerHTML.indexOf("<button>");
+    let indexToCutTo = ogInnerHTML.indexOf("<button");
     let slicedInnerHTML = ogInnerHTML.slice(0, indexToCutTo);
 
     props.handleClick(slicedInnerHTML);
@@ -58,7 +58,9 @@ function TaskList(props){
 
 function App(){
 
-  let [tasks, setTasks] = useState([]);
+  let [tasks, setTasks] = useState(JSON.parse(localStorage.getItem("tasks") || []));
+
+  localStorage.setItem("tasks", JSON.stringify(tasks));
 
 
   function addTasks(addition){
@@ -69,7 +71,7 @@ function App(){
     let copiedArray = [...tasks];
     let indexToDelete = copiedArray.indexOf(subtraction);
 
-    copiedArray.splice(indexToDelete,1);
+    copiedArray.splice(indexToDelete, 1);
     setTasks(copiedArray);
   }
   

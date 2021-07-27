@@ -58,7 +58,7 @@ function TaskList(props){
 
 function App(){
 
-  let [tasks, setTasks] = useState(JSON.parse(localStorage.getItem("tasks") || []));
+  let [tasks, setTasks] = useState(JSON.parse(localStorage.getItem("tasks")) || []);
 
   localStorage.setItem("tasks", JSON.stringify(tasks));
 

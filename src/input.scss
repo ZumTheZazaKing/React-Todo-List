@@ -9,7 +9,7 @@ body{
     .container{
 
         text-align: center;
-        margin-top: 50px;
+        margin-top: 80px;
 
         h1{
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -49,6 +49,25 @@ body{
                     border-top: 1px solid grey;
                     border-bottom: 1px solid grey;
                     text-align: left;
+                    cursor: pointer;
+                    width: 400px;
+
+                    button{
+                        float: right;
+                        cursor: pointer;
+                        background: transparent;
+                        color: red;
+                        border: 2px solid red;
+                        border-radius: 5px;
+                        transition: .2s ease-in;
+                        margin-left: 10px;
+                    }
+
+                    button:hover{
+                        color: white;
+                        background: red;
+                    }
+
                 }
 
                 li:first-child{
@@ -57,6 +76,10 @@ body{
 
                 li:last-child{
                     border-bottom: none;
+                }
+
+                .crossOut{
+                    text-decoration: line-through;
                 }
 
             }

@@ -30,8 +30,21 @@ function AddTaskForm(props){
 
 function TaskList(props){
 
+  function crossOut(e){
+    !e.target.className ? e.target.className = "crossOut" : e.target.className = "";
+  }
+
+  function deleteTask(e){
+    let ogInnerHTML = e.target.parentNode.innerHTML;
+    let indexToCutTo = ogInnerHTML.indexOf("<button>");
+    let slicedInnerHTML = ogInnerHTML.slice(0, indexToCutTo);
+
+    props.handleClick(slicedInnerHTML);
+  }
+
   let arr = props.data;
-  let listItems = arr.map(val => <li>{val}</li>)
+  let listItems = arr.map(val => <li className="" onClick={crossOut}>{val}<button onClick={deleteTask}>X</button></li>);
+
 
   return <div className="list">
 
@@ -48,19 +61,26 @@ function App(){
   let [tasks, setTasks] = useState([]);
 
 
-  function changeTasks(addition){
-
+  function addTasks(addition){
     setTasks([...tasks, addition])
-
   }
+
+  function removeTasks(subtraction){
+    let copiedArray = [...tasks];
+    let indexToDelete = copiedArray.indexOf(subtraction);
+
+    copiedArray.splice(indexToDelete,1);
+    setTasks(copiedArray);
+  }
+  
 
   return <div className="container">
 
     <h1>ToDo List</h1>
 
-    <AddTaskForm handleSubmit={changeTasks}/>
+    <AddTaskForm handleSubmit={addTasks}/>
     <br />
-    <TaskList data={tasks}/>
+    <TaskList data={tasks} handleClick={removeTasks}/>
 
   </div>
 

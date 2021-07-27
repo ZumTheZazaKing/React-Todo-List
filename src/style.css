@@ -8,7 +8,7 @@ body {
 }
 body .container {
   text-align: center;
-  margin-top: 50px;
+  margin-top: 80px;
 }
 body .container h1 {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -37,12 +37,31 @@ body .container .list ul li {
   border-top: 1px solid grey;
   border-bottom: 1px solid grey;
   text-align: left;
+  cursor: pointer;
+  width: 400px;
+}
+body .container .list ul li button {
+  float: right;
+  cursor: pointer;
+  background: transparent;
+  color: red;
+  border: 2px solid red;
+  border-radius: 5px;
+  transition: 0.2s ease-in;
+  margin-left: 10px;
+}
+body .container .list ul li button:hover {
+  color: white;
+  background: red;
 }
 body .container .list ul li:first-child {
   border-top: none;
 }
 body .container .list ul li:last-child {
   border-bottom: none;
+}
+body .container .list ul .crossOut {
+  text-decoration: line-through;
 }
 
 /*# sourceMappingURL=style.css.map */

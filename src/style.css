@@ -7,7 +7,7 @@ body {
   align-items: center;
 }
 body #credit {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   display: flex;
@@ -34,6 +34,7 @@ body #credit p {
 body .container {
   text-align: center;
   margin-top: 100px;
+  margin-bottom: 50px;
 }
 body .container h1 {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;

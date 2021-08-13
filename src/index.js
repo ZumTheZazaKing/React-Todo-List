@@ -10,6 +10,11 @@ import 'firebase/firestore';
 
 import { useAuthState } from 'react-firebase-hooks/auth';
 
+firebase.initializeApp(firebaseConfig);
+
+const auth = firebase.auth();
+const firestore = firebase.firestore();
+
 
 function AddTaskForm(props){
 
@@ -65,9 +70,7 @@ function TaskList(props){
 
 function Main(){
 
-  let [tasks, setTasks] = useState(JSON.parse(localStorage.getItem("tasks")) || []);
-
-  localStorage.setItem("tasks", JSON.stringify(tasks));
+  let [tasks, setTasks] = useState([]);
 
 
   function addTasks(addition){
@@ -90,14 +93,42 @@ function Main(){
     <AddTaskForm handleSubmit={addTasks}/>
     <br />
     <TaskList data={tasks} handleClick={removeTasks}/>
+    <br/>
+    <SignOut/>
 
+  </div>
+  
+
+}
+
+function SignIn(){
+
+  const signInWithGoogle = () => {
+      const provider = new firebase.auth.GoogleAuthProvider();
+      auth.signInWithPopup(provider);
+  }
+
+  return <div id="signIn">
+      <button onClick={signInWithGoogle}>Sign In With Google</button>
   </div>
 
 }
 
 
+function SignOut(){
+  return auth.currentUser && (
+      <button id="signOut" onClick={() => auth.signOut()}>Sign Out</button>
+  )
+}
+
+
 function App(){
-  return <Main/>
+
+  const [user] = useAuthState(auth);
+
+  return <div>
+    {user ? <Main/> : <SignIn/>}
+  </div>
 }
 
 

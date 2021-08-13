@@ -3,6 +3,13 @@ import { useState } from 'react';
 import ReactDOM from 'react-dom';
 import './style.css';
 
+import { firebaseConfig } from './firebase';
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/firestore';
+
+import { useAuthState } from 'react-firebase-hooks/auth';
+
 
 function AddTaskForm(props){
 
@@ -56,7 +63,7 @@ function TaskList(props){
 
 
 
-function App(){
+function Main(){
 
   let [tasks, setTasks] = useState(JSON.parse(localStorage.getItem("tasks")) || []);
 
@@ -89,8 +96,11 @@ function App(){
 }
 
 
+function App(){
+  return <Main/>
+}
+
+
 let el = <App />
 
 ReactDOM.render(el, document.getElementById('root'));
-
-export default 'style';

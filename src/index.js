@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import ReactDOM from 'react-dom';
 import './style.css';
@@ -42,10 +42,6 @@ function AddTaskForm(props){
 
 function TaskList(props){
 
-  function crossOut(e){
-    !e.target.className ? e.target.className = "crossOut" : e.target.className = "";
-  }
-
   function deleteTask(e){
     let ogInnerHTML = e.target.parentNode.innerHTML;
     let indexToCutTo = ogInnerHTML.indexOf("<button");
@@ -55,7 +51,7 @@ function TaskList(props){
   }
 
   let arr = props.data;
-  let listItems = arr.map(val => <li className="" onClick={crossOut}>{val}<button onClick={deleteTask}>X</button></li>);
+  let listItems = arr.map(val => <li className="">{val}<button onClick={deleteTask}>X</button></li>);
 
 
   return <div className="list">
@@ -66,22 +62,46 @@ function TaskList(props){
 
 }
 
-
+let mainOn = false;
 
 function Main(){
+  
+  mainOn = true;
+
 
   let [tasks, setTasks] = useState([]);
+
+  let docRef = firestore.collection("users").doc(auth.currentUser.uid);
+
+  function setFirebaseValues(data){
+    setTasks(data);
+  }
+
+  useEffect(() => {
+    docRef.get().then(doc => {
+      if(doc.exists){
+        console.log("Exists!");
+        docRef.get().then(data => setFirebaseValues(data.data().tasks));
+      } else {
+        docRef.set({tasks:[]});
+        docRef.get().then(data => setFirebaseValues(data.data().tasks));
+      }
+    })
+  },[mainOn])
 
 
   function addTasks(addition){
     setTasks([...tasks, addition])
+    docRef.update({tasks:[...tasks, addition]})
   }
 
   function removeTasks(subtraction){
     let copiedArray = [...tasks];
     let indexToDelete = copiedArray.indexOf(subtraction);
 
+    
     copiedArray.splice(indexToDelete, 1);
+    docRef.update({tasks:copiedArray});
     setTasks(copiedArray);
   }
   

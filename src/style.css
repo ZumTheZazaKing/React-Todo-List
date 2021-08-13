@@ -1,17 +1,64 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
-  background-color: burlywood;
+  background-color: whitesmoke;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1440' height='1440' preserveAspectRatio='none' viewBox='0 0 1440 1440'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1234%26quot%3b)' fill='none'%3e%3crect width='1440' height='1440' x='0' y='0' fill='rgba(142%2c 151%2c 161%2c 1)'%3e%3c/rect%3e%3cpath d='M0%2c387.771C85.692%2c395.007%2c177.142%2c434.274%2c252.708%2c393.221C328.901%2c351.827%2c345.276%2c252.672%2c387.786%2c177.096C434.799%2c93.514%2c518.631%2c21.719%2c515.585%2c-74.13C512.487%2c-171.633%2c445.401%2c-258.107%2c371.918%2c-322.268C303.521%2c-381.988%2c213.119%2c-411.044%2c122.536%2c-417.319C42.711%2c-422.849%2c-25.327%2c-368.05%2c-104.314%2c-355.26C-199.328%2c-339.875%2c-308.223%2c-390.922%2c-386.488%2c-334.894C-465.743%2c-278.157%2c-496.254%2c-169.301%2c-500.128%2c-71.908C-503.835%2c21.275%2c-457.695%2c107.557%2c-407.207%2c185.965C-361.939%2c256.266%2c-301.611%2c315.611%2c-226.692%2c352.74C-156.766%2c387.394%2c-77.765%2c381.204%2c0%2c387.771' fill='%2359626c'%3e%3c/path%3e%3cpath d='M1440 1936.547C1533.713 1948.233 1621.63 1896.9859999999999 1704.003 1850.797 1790.778 1802.1390000000001 1902.907 1759.1399999999999 1928.0439999999999 1662.882 1953.536 1565.265 1838.694 1484.595 1825.762 1384.536 1812.521 1282.092 1912.1680000000001 1166.807 1852.9850000000001 1082.146 1795.3310000000001 999.672 1661.951 1041.2730000000001 1565.573 1012.338 1468.382 983.159 1385.37 897.736 1284.841 911.578 1181.149 925.855 1092.21 1000.744 1031.341 1085.895 973.127 1167.333 946.731 1270.922 956.773 1370.522 965.804 1460.092 1036.232 1526.185 1083.461 1602.826 1124.289 1669.079 1158.354 1736.66 1215.171 1789.841 1281.855 1852.257 1349.365 1925.245 1440 1936.547' fill='%23c8ccd1'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1234'%3e%3crect width='1440' height='1440' fill='white'%3e%3c/rect%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
   margin: 0;
   padding: 0;
+}
+body #signIn {
+  text-align: center;
+}
+body #signIn h2 {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+body #signIn p {
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 10px;
+}
+body #signIn button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  border-radius: 50px;
+  cursor: pointer;
+}
+body .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+body .container #displayAcc {
+  text-align: center;
+}
+body .container #displayAcc h4 {
+  margin-left: 10px;
+}
+body .container #displayAcc img {
+  border-radius: 50px;
+  border: 2px solid black;
+}
+body .container #displayAcc #mainDetails {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-body .container {
-  text-align: center;
-  margin-top: 100px;
-  margin-bottom: 50px;
+body .container #displayAcc #signOut {
+  padding: 5px 10px;
+  border-radius: 50px;
+  cursor: pointer;
+  border: none;
+  outline: none;
 }
-body .container h1 {
+body .container h2, body .container h4 {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 body .container .form input[type=text], body .container .form input[type=submit] {
@@ -26,44 +73,42 @@ body .container .form input[type=submit] {
 body .container .form input[type=submit]:hover {
   background-color: rgba(211, 211, 211, 0.9);
 }
+body .container .list {
+  margin: 10px;
+  width: 100%;
+  padding: 10px;
+}
 body .container .list ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
+  display: flex;
+  flex-direction: column;
 }
 body .container .list ul li {
-  background-color: white;
-  padding: 10px;
-  font-family: Arial, Helvetica, sans-serif;
-  border-top: 1px solid grey;
-  border-bottom: 1px solid grey;
-  text-align: left;
-  cursor: pointer;
-  width: 400px;
+  background: white;
+  padding: 10px 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
   word-wrap: break-word;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5;
+  clear: both;
 }
 body .container .list ul li button {
   float: right;
-  cursor: pointer;
   background: transparent;
   color: red;
-  border: 2px solid red;
-  border-radius: 5px;
-  transition: 0.2s ease-in;
-  margin-left: 10px;
+  border: none;
+  outline: none;
+  font-size: 24px;
 }
-body .container .list ul li button:hover {
-  color: white;
-  background: red;
-}
-body .container .list ul li:first-child {
-  border-top: none;
-}
-body .container .list ul li:last-child {
-  border-bottom: none;
-}
-body .container .list ul .crossOut {
-  text-decoration: line-through;
+body #footer {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  text-align: center;
+  margin-bottom: 5px;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -30,7 +30,7 @@ function AddTaskForm(props){
 
     <form onSubmit={e => {props.handleSubmit(value); setValue(""); e.preventDefault()}}>
 
-      <input type="text" value={value} onChange={handleChange} required/>
+      <input type="text" max={40} placeholder="Max 40 words" value={value} onChange={handleChange} required/>
       <input type="submit" value="+"/>
 
     </form>
@@ -51,7 +51,7 @@ function TaskList(props){
   }
 
   let arr = props.data;
-  let listItems = arr.map(val => <li className="">{val}<button onClick={deleteTask}>X</button></li>);
+  let listItems = arr.map(val => <li className="">{val}<button onClick={deleteTask}><i className="fa fa-trash-o"></i></button></li>);
 
 
   return <div className="list">
@@ -80,7 +80,6 @@ function Main(){
   useEffect(() => {
     docRef.get().then(doc => {
       if(doc.exists){
-        console.log("Exists!");
         docRef.get().then(data => setFirebaseValues(data.data().tasks));
       } else {
         docRef.set({tasks:[]});
@@ -108,13 +107,21 @@ function Main(){
 
   return <div className="container">
 
-    <h1>ToDo List</h1>
+    <div id="displayAcc">
+      <div id="mainDetails">
+        <img width="50" height="50" src={auth.currentUser.photoURL} alt="pp"/>
+        <h4>Hello, {auth.currentUser.displayName}</h4>
+      </div>
+      <SignOut/>
+    </div>
+    <br/>
+    <h2>ToDo List</h2>
 
     <AddTaskForm handleSubmit={addTasks}/>
     <br />
     <TaskList data={tasks} handleClick={removeTasks}/>
     <br/>
-    <SignOut/>
+    
 
   </div>
   
@@ -129,6 +136,8 @@ function SignIn(){
   }
 
   return <div id="signIn">
+      <h2>ToDo List</h2>
+      <p>Make sure you keep all your tasks inline with this app!</p>
       <button onClick={signInWithGoogle}>Sign In With Google</button>
   </div>
 

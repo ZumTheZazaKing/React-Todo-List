@@ -1,5 +1,3 @@
-import firebase from 'firebase/app';
-
 export const firebaseConfig = {
     apiKey: "AIzaSyArq5t7Tr9xIcbMOdIhOI3Al6zHjb4Lk78",
     authDomain: "todo-list-1c383.firebaseapp.com",

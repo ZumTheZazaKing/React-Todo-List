@@ -6,31 +6,6 @@ body {
   justify-content: center;
   align-items: center;
 }
-body #credit {
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-body #credit img {
-  content: url(./logo.svg);
-  animation: rotate 10s linear infinite;
-}
-body #credit p {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 16px;
-  font-weight: bold;
-}
-@keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
 body .container {
   text-align: center;
   margin-top: 100px;
